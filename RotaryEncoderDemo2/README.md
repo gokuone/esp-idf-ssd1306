@@ -13,7 +13,7 @@ The original image resolution is 420x200.
 ![Image](https://github.com/user-attachments/assets/d50b2d41-3280-40f3-8ca2-4f48a8a2eb15)
 ![Image](https://github.com/user-attachments/assets/9011ef19-c63f-41f0-861c-e234531f7bc5)
 
-# Wirering
+# Wiring
 |Device||ESP32|ESP32-S2/S3|ESP32-C2/C3/C6||
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |VCC|--|3V3|3V3|3V3||
