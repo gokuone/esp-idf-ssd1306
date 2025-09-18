@@ -112,9 +112,8 @@ void ssd1306_display_text(SSD1306_t * dev, int page, const char * text, int text
 	}
 }
 
-void ssd1306_display_text_at(SSD1306_t * dev, int page, int seg, const char * text, int text_len, bool invert)
+void ssd1306_display_text_at(SSD1306_t * dev, int x, int y, const char * text, int text_len, bool invert)
 {
-	if (page >= dev->_pages) return;
 	int _text_len = text_len;
 	if (_text_len > 16) _text_len = 16;
 
@@ -123,8 +122,11 @@ void ssd1306_display_text_at(SSD1306_t * dev, int page, int seg, const char * te
 		memcpy(image, font8x8_basic_tr[(uint8_t)text[i]], 8);
 		if (invert) ssd1306_invert(image, 8);
 		if (dev->_flip) ssd1306_flip(image, 8);
-		ssd1306_display_image(dev, page, seg, image, 8);
-		seg = seg + 8;
+		//ssd1306_display_image(dev, page, y, image, 8);
+
+		ssd1306_rotate_image(image, false);
+		ssd1306_bitmaps(dev, x, y, image, 8, 8, invert);
+		x = x + 8;
 	}
 }
 
