@@ -122,10 +122,8 @@ void ssd1306_display_text_at(SSD1306_t * dev, int x, int y, const char * text, i
 		memcpy(image, font8x8_basic_tr[(uint8_t)text[i]], 8);
 		if (invert) ssd1306_invert(image, 8);
 		if (dev->_flip) ssd1306_flip(image, 8);
-		//ssd1306_display_image(dev, page, y, image, 8);
-
 		ssd1306_rotate_image(image, false);
-		ssd1306_bitmaps(dev, x, y, image, 8, 8, invert);
+		ssd1306_bitmaps(dev, x, y, image, 8, 8, false);
 		x = x + 8;
 	}
 }
