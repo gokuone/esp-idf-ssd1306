@@ -1,3 +1,5 @@
+I had to fork the main repo to be able to add a function that allows text to be displayed anywhere we want in the screen
+
 # esp-idf-ssd1306
 SSD1306/SH1106 driver for esp-idf
 
