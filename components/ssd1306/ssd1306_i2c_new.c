@@ -289,3 +289,18 @@ void i2c_hardware_scroll(SSD1306_t * dev, ssd1306_scroll_type_t scroll) {
 		ESP_LOGE(TAG, "Could not write to device [0x%02x at %d]: %d (%s)", dev->_address, dev->_i2c_num, res, esp_err_to_name(res));
 }
 
+void ssd1306_screen_display(SSD1306_t * dev, bool display)
+{
+	uint8_t out_buf[2];
+	int out_index = 0;
+	out_buf[out_index++] = OLED_CONTROL_BYTE_CMD_STREAM;
+	out_buf[out_index++] = (!display)?OLED_CMD_DISPLAY_OFF:OLED_CMD_DISPLAY_ON;
+
+	esp_err_t res;
+	res = i2c_master_transmit(dev->_i2c_dev_handle, out_buf, out_index, I2C_TICKS_TO_WAIT);
+	if (res == ESP_OK) {
+		ESP_LOGI(TAG, "OLED display off");
+	} else {
+		ESP_LOGE(TAG, "Could not write to device [0x%02x at %d]: %d (%s)", dev->_address, dev->_i2c_num, res, esp_err_to_name(res));
+	}
+}
