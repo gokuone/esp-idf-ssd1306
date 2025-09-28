@@ -124,6 +124,7 @@ extern "C"
 #endif
 
 void ssd1306_init(SSD1306_t * dev, int width, int height);
+void ssd1306_screen_display(SSD1306_t * dev, bool display);
 int ssd1306_get_width(SSD1306_t * dev);
 int ssd1306_get_height(SSD1306_t * dev);
 int ssd1306_get_pages(SSD1306_t * dev);
